@@ -6,11 +6,16 @@ import logger from 'redux-logger';
 
 const rootReducer = combineReducers({
   inRoom: socketReducer(false, SOCKET_ACTIONS.IN_PARTY_STATUS),
+  players: socketReducer(
+    [],
+    SOCKET_ACTIONS.PLAYERS_UPDATED
+  ),
   game: socketReducer(
     {
-      notInitialized: true,
+      inProgress: false,
+      isMaster: false,
       playerGrid: [] as PlayerGrid,
-      masterCard: {} as MasterCard,
+      masterCard: undefined as MasterCard | undefined,
       stagedGuess: [undefined, undefined] as Coordinate,
       submittedGuesses: [] as SubmittedGuess[]
     },

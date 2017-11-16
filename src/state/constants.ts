@@ -7,7 +7,8 @@ export enum SOCKET_ACTIONS {
   GAME_STATE_CHANGED = 'gameChanged',
   SUBMIT_GUESS = 'submitGuess',
   STAGE_GUESS = 'stageGuess',
-  CHANGE_VIEW = 'changeView'
+  CHANGE_VIEW = 'changeView',
+  PLAYERS_UPDATED = 'playersUpdated'
 }
 
 // tslint:disable-next-line:no-any

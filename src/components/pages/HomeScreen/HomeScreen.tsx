@@ -9,14 +9,16 @@ import { FormControl } from 'material-ui/Form';
 interface Props {
   createPartyValue: string;
   joinPartyValue: string;
+  nicknameValue: string;
   updateCreatePartyValue: (a: string) => void;
   updateJoinPartyValue: (a: string) => void;
+  updateNicknameValue: (a: string) => void;
   submitCreateParty: () => void;
   submitJoinParty: () => void;
   children?: React.ReactNode;
 }
 
-const HomeScreen: React.SFC = (props: Props) => (
+const HomeScreen: React.SFC<Props> = (props: Props) => (
   <Grid
     container={true}
     direction={'row'}
@@ -29,9 +31,25 @@ const HomeScreen: React.SFC = (props: Props) => (
       style={{ padding: 16 }}
     >
       <div style={{ textAlign: 'center' }}>
-        <Typography type="title"gutterBottom={true}>
+        <Typography type="title" gutterBottom={true}>
           Codenames Online
         </Typography>
+      </div>
+      <div style={{ textAlign: 'center', paddingTop: 16 }}>
+          <FormControl
+            fullWidth={true}
+            error={props.nicknameValue === '' && (props.createPartyValue !== '' || props.joinPartyValue !== '')}
+          >
+            <InputLabel htmlFor="join">Nickname*</InputLabel>
+            <Input
+              fullWidth={true}
+              id="join"
+              type={'text'}
+              value={props.nicknameValue}
+              onChange={(event) => props.updateNicknameValue(event.target.value)}
+              placeholder={'Nickname'}
+            />
+          </FormControl>
       </div>
       <div style={{ textAlign: 'center', paddingTop: 16 }}>
         <FormControl>
@@ -45,7 +63,7 @@ const HomeScreen: React.SFC = (props: Props) => (
               <InputAdornment position="end">
                 <Button
                   onClick={props.submitJoinParty}
-                  disabled={props.joinPartyValue === ''}
+                  disabled={props.joinPartyValue === '' || props.nicknameValue === ''}
                 >
                   Join
                 </Button>
@@ -67,7 +85,7 @@ const HomeScreen: React.SFC = (props: Props) => (
               <InputAdornment position="end">
                 <Button
                   onClick={props.submitCreateParty}
-                  disabled={props.createPartyValue === ''}
+                  disabled={props.createPartyValue === '' || props.nicknameValue === ''}
                 >
                   Create
                 </Button>

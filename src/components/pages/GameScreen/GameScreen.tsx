@@ -5,14 +5,14 @@ interface Props {
   newGame: () => void;
   toggleIsMaster: () => void;
   isMaster: boolean;
-  notInitialized: boolean;
+  inProgress: boolean;
   children?: React.ReactNode;
 }
 
 const GameScreen: React.SFC<Props> = (props: Props) => {
-  if (props.notInitialized !== undefined) {
+  if (!props.inProgress) {
     return (
-      <div>WAIT</div>
+      <div>READY UP SCREEN</div>
     );
   }
   return (
