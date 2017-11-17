@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { compose, branch, renderComponent } from 'recompose';
-import { GameScreen, HomeScreen } from '../index';
+import { InProgressGuard, HomeScreen } from '../index';
 
 export default compose(
   connect<
@@ -16,4 +16,4 @@ export default compose(
     (ownProps => !ownProps.inRoom),
     renderComponent(HomeScreen)
   )
-)(GameScreen);
+)(InProgressGuard);

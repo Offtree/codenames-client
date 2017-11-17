@@ -1,4 +1,5 @@
 import { SocketOnAction, ON } from './redux-socket/index';
+
 export enum SOCKET_ACTIONS {
   MAKE_PARTY = 'makeParty',
   JOIN_PARTY = 'joinParty',
@@ -8,7 +9,7 @@ export enum SOCKET_ACTIONS {
   SUBMIT_GUESS = 'submitGuess',
   STAGE_GUESS = 'stageGuess',
   CHANGE_VIEW = 'changeView',
-  PLAYERS_UPDATED = 'playersUpdated'
+  PLAYERS_UPDATED = 'playersChanged'
 }
 
 // tslint:disable-next-line:no-any

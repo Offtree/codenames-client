@@ -4,6 +4,13 @@ export enum Players {
   BOMB = 'X',
   NOONE = 'N'
 }
+
+export interface PlayerStatus {
+  id: string;
+  isMaster: boolean;
+  isReady: boolean;
+  username: string;
+}
 export interface MasterCard {
   firstPlayer: Players;
   placements: {[key in Players]: [number, number][]};

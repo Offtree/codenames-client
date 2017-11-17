@@ -9,22 +9,14 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const GameScreen: React.SFC<Props> = (props: Props) => {
-  if (!props.inProgress) {
-    return (
-      <div>READY UP SCREEN</div>
-    );
-  }
-  return (
-    <div>
-      {props.isMaster ? 
-        <MasterCard /> :
-        <PlayerGrid />
-      }
-      <button onClick={props.newGame}>New Game</button>
-      <button onClick={props.toggleIsMaster}>Change View</button>
-    </div>
-  );
-};
+const GameScreen: React.SFC<Props> = (props: Props) => (
+  <div>
+    {props.isMaster ? 
+      <MasterCard /> :
+      <PlayerGrid />
+    }
+    <button onClick={props.newGame}>New Game</button>
+  </div>
+);
 
 export default GameScreen;

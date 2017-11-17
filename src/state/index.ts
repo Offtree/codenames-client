@@ -1,13 +1,13 @@
-import { MasterCard, PlayerGrid, Coordinate, SubmittedGuess } from './../interfaces';
+import { MasterCard, PlayerGrid, PlayerStatus, Coordinate, SubmittedGuess } from './../interfaces';
 import { createStore, combineReducers, Middleware, applyMiddleware } from 'redux';
 import SocketMiddleware from './redux-socket';
 import { SOCKET_ACTIONS, socketReducer } from './constants';
 import logger from 'redux-logger';
 
 const rootReducer = combineReducers({
-  inRoom: socketReducer(false, SOCKET_ACTIONS.IN_PARTY_STATUS),
+  inRoom: socketReducer(null, SOCKET_ACTIONS.IN_PARTY_STATUS),
   players: socketReducer(
-    [],
+    [] as PlayerStatus[],
     SOCKET_ACTIONS.PLAYERS_UPDATED
   ),
   game: socketReducer(
@@ -31,7 +31,8 @@ export const generateStore = () => {
   const middleware: Middleware[] = [
     SocketMiddleware(url, [
       SOCKET_ACTIONS.IN_PARTY_STATUS,
-      SOCKET_ACTIONS.GAME_STATE_CHANGED
+      SOCKET_ACTIONS.GAME_STATE_CHANGED,
+      SOCKET_ACTIONS.PLAYERS_UPDATED
     ])
   ];
 
