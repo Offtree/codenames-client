@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MasterCard, PlayerGrid } from '../../../interfaces';
 import Grid from 'material-ui/Grid';
 import { getBorderColor, getTileOwner } from '../../../utils';
-import { WordTile } from '../../molecules';
+import { MasterTile } from '../../molecules';
 interface Props {
   stageGuess: () => void;
   submitGuess: () => void;
@@ -12,21 +12,23 @@ interface Props {
 }
 
 const MasterCard: React.SFC = (props: Props) => (
-  <div
-    style={{
-      boxShadow: `0px 0px 15px ${getBorderColor(props.masterCard)}`,
-      padding: 8,
-      marginBottom: 12
-    }}
-  >
+  <div>
     {props.masterCard.placements !== undefined ?
-      <Grid container={true}>
+      <Grid
+        container={true}
+        justify="center"
+        alignItems="center"
+        style={{
+          border: `5px solid ${getBorderColor(props.masterCard)}`,
+          height: '100vh'
+        }}
+      >
         {props.playerGrid.map((row, rowIndex) => (
           <Grid item={true} xs={12} key={row.join('-')}>
             <Grid container={true} alignItems={'stretch'} justify={'space-around'}>
               {row.map((col, colIndex) =>
-                <Grid item={true} style={{ width: '20%' }} key={col}>
-                  <WordTile
+                <Grid item={true} xs={true} key={col}>
+                  <MasterTile
                     isStaged={false}
                     ownedBy={getTileOwner([rowIndex, colIndex], props.masterCard)}
                     word={col}

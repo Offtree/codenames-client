@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Button from 'material-ui/Button';
+import Paper from 'material-ui/Paper';
+import Typography from 'material-ui/Typography';
 import { Players } from '../../../interfaces';
 import { getPlayerColor } from '../../../utils';
 
@@ -12,26 +13,22 @@ interface Props {
   children?: React.ReactNode;
 }
 
-const WordTile: React.SFC<Props> = (props: Props) => {
+const MasterTile: React.SFC<Props> = (props: Props) => {
   let color: undefined|string = 'white';
   color = props.isStaged ? undefined : color;
   color = props.ownedBy ? getPlayerColor(props.ownedBy) : color;
   return (
-    <Button
-      raised={true}
+    <Paper
       style={{
-        backgroundColor: color,
-        whiteSpace: 'nowrap',
-        width: '100%'
+        border: `5px solid ${color}`,
+        paddingTop: 8,
+        paddingBottom: 8,
+        textAlign: 'center'
       }}
-      onClick={() => {
-        props.isStaged ? props.submitGuess() : props.stageGuess();
-      }}
-      title={props.word}
     >
-      {props.word}
-    </Button>
+      <Typography type="caption" noWrap={true}>{props.word}</Typography>
+    </Paper>
   );
 };
 
-export default WordTile;
+export default MasterTile;

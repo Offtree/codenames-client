@@ -14,9 +14,14 @@ interface Props {
 }
 
 const PlayerGrid: React.SFC<Props> = (props: Props) => (
-  <Grid container={true}>
+  <Grid
+    container={true}
+    style={{
+      height: '100vh'
+    }}
+  >
     {props.playerGrid.map(((row, index) => (
-      <Grid item={true} xs={12} key={`test-${index}`}>
+      <Grid item={true} xs={12} key={index}>
         <Grid container={true} alignItems={'stretch'} justify={'space-between'}>
         {row.map((col, colIndex) =>
           <Grid item={true} style={{ width: '20%'}} key={col}>
