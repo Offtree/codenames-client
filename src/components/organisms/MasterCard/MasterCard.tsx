@@ -17,7 +17,7 @@ const MasterCard: React.SFC = (props: Props) => (
       <Grid
         container={true}
         justify="center"
-        alignItems="center"
+        alignItems="stretch"
         style={{
           border: `5px solid ${getBorderColor(props.masterCard)}`,
           height: '100vh'
@@ -25,7 +25,7 @@ const MasterCard: React.SFC = (props: Props) => (
       >
         {props.playerGrid.map((row, rowIndex) => (
           <Grid item={true} xs={12} key={row.join('-')}>
-            <Grid container={true} alignItems={'stretch'} justify={'space-around'}>
+            <Grid container={true} alignItems={'stretch'} justify={'space-around'} style={{ height: '100%' }}>
               {row.map((col, colIndex) =>
                 <Grid item={true} xs={true} key={col}>
                   <MasterTile

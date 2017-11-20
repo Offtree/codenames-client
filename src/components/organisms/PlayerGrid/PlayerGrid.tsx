@@ -16,15 +16,17 @@ interface Props {
 const PlayerGrid: React.SFC<Props> = (props: Props) => (
   <Grid
     container={true}
+    justify="space-around"
+    alignItems="stretch"
     style={{
       height: '100vh'
     }}
   >
     {props.playerGrid.map(((row, index) => (
       <Grid item={true} xs={12} key={index}>
-        <Grid container={true} alignItems={'stretch'} justify={'space-between'}>
+        <Grid container={true} alignItems={'stretch'} justify={'space-between'} style={{ height: '100%' }}>
         {row.map((col, colIndex) =>
-          <Grid item={true} style={{ width: '20%'}} key={col}>
+          <Grid item={true} style={{ width: '20%', height: '100%' }} key={col}>
           <WordTile
             word={col}
             isStaged={isStagedGuess(props.stagedGuess, [index, colIndex])}

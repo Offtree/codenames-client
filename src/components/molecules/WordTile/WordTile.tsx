@@ -22,7 +22,8 @@ const WordTile: React.SFC<Props> = (props: Props) => {
       style={{
         backgroundColor: color,
         whiteSpace: 'nowrap',
-        width: '100%'
+        width: '100%',
+        height: '100%'
       }}
       onClick={() => {
         props.isStaged ? props.submitGuess() : props.stageGuess();

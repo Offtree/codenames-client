@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PlayerGrid, MasterCard } from '../../organisms';
+import { PlayerGrid, MasterCard, GameBar } from '../../organisms';
 
 interface Props {
   newGame: () => void;
@@ -11,11 +11,11 @@ interface Props {
 
 const GameScreen: React.SFC<Props> = (props: Props) => (
   <div>
+    <GameBar />
     {props.isMaster ? 
       <MasterCard /> :
       <PlayerGrid />
     }
-    <button onClick={props.newGame}>New Game</button>
   </div>
 );
 

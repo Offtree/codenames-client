@@ -26,7 +26,7 @@ const ReadyScreen: React.SFC<Props> = (props: Props) => {
       direction={'row'}
       justify={'center'}
       alignItems={'center'}
-      style={{ minHeight: '100vh', backgroundColor: '#f5f5f5' }}
+      style={{ minHeight: '100vh' }}
     >
       <Grid item={true}>
         <Paper style={{ minWidth: 275, paddingTop: 16 }}>
