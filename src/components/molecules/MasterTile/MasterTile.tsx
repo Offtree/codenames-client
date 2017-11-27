@@ -31,7 +31,7 @@ const MasterTile: React.SFC<Props> = (props: Props) => {
     >
       <Grid container={true} alignItems="center" justify="center" style={{height: '100%'}}>
         <Grid item={true} xs={true}>
-          <Typography noWrap={true}>{props.word}</Typography>
+          <Typography noWrap={true} style={{ fontSize: '2.75vw' }}>{props.word}</Typography>
         </Grid>
       </Grid>
     </Paper>
