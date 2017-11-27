@@ -48,7 +48,7 @@ const WordTile: React.SFC<Props> = (props: Props) => {
       }}
       title={props.word}
     >
-      {props.ownedBy ? '' : props.word}
+      {props.ownedBy ? ' ' : props.word}
     </Button>
   );
 };
